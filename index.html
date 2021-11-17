@@ -7,13 +7,18 @@
     <link rel="preload" href="logo.html" as="object">
     <link rel="preload" href="window.webp" as="image">
     <style media="screen">
+      html {
+        height: 100%;
+        overflow: hidden;
+        -webkit-overflow-scrolling: auto;
+      }
       body {
+        height: 100%;
         overflow: hidden;
         background-color: #000;
         background: #000 no-repeat url(window.webp);
         background-size: cover;
         background-position: center;
-        min-height: 100vh;
         margin: 0;
         padding: 0 20px;
         display: flex;
