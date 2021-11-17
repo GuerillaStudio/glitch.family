@@ -3,11 +3,16 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Glitch Family</title>
+    <title>Glitch.Family</title>
+    <link rel="preload" href="logo.html" as="object">
+    <link rel="preload" href="window.webp" as="image">
     <style media="screen">
       body {
         overflow: hidden;
         background-color: #000;
+        background: #000 no-repeat url(window.webp);
+        background-size: cover;
+        background-position: center;
         min-height: 100vh;
         margin: 0;
         padding: 0 20px;
@@ -18,6 +23,8 @@
         font-family: monospace;
         color: #fff;
         text-align: center;
+        -webkit-backdrop-filter: blur(15px);
+        backdrop-filter: blur(15px);
       }
       .title {
         display: flex;
@@ -25,30 +32,18 @@
         justify-content: center;
       }
       .logo {
+        position: relative;
         width: 90%;
         max-width: 900px;
-        display: flex;
-        align-items: center;
-        flex-grow: 1;
-        min-width: 0;
-      }
+        aspect-ratio: 534 / 40;
+        }
 
-      .logo-part1,
-      .logo-part2 {
-        flex-shrink: 1;
+      @media (min-width: 534px) {
+        .logo {
+          height: 40px;
+          aspect-ratio: unset;
+        }
       }
-
-      .logo-expand {
-        flex-grow: 1;
-        min-width: 0;
-        align-self: stretch;
-        margin-left: -1px;
-        margin-right: -1px;
-        background-size: auto 100%;
-        background-repeat: repeat-x;
-        background-image: url("data:image/svg+xml,%3Csvg width='1' height='40' viewBox='0 0 1 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FFF'%3E%3Cpath d='M0 28.84h1V40H0zM0 0h1v11.33H0z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-      }
-
 
       body::before {
         background: linear-gradient(#d9d9d9 50%, #000 50%);
@@ -145,35 +140,25 @@
           transform: none;
         }
       }
+      
+      /* Reset glitch stuff */
+
+      @media (prefers-reduced-motion) {
+        body::before {
+          animation: unset;
+        }
+        body:after {
+          content: none;
+        }
+        .distortion {
+          animation: unset;
+        }
+      }
     </style>
   </head>
   <body>
     <h1 aria-label="Glitch Family" title="Pouet" class="title distortion">
-      <div class="logo">
-        <!-- GLITC -->
-        <svg class="logo-part1" width="192" height="40" viewBox="0 0 192 40" xmlns="http://www.w3.org/2000/svg">
-          <g fill="#FFF" fill-rule="evenodd">
-            <path
-              d="M28.47 40c12.289 0 20.901-8.895 20.901-20v-2.376l-24.52-.055v8.84h10.093c-.768 1.326-3.237 2.762-6.473 2.762h-7.406c-5.321 0-8.777-3.812-8.777-9.005 0-5.138 3.456-8.84 8.777-8.84h7.406c3.072 0 5.486 1.381 6.857 3.204h13.55C46.628 5.635 38.784 0 28.47 0h-7.406C8.777 0 0 8.066 0 20c0 11.989 9.051 20 21.065 20h7.406Zm62.703-.663V28.674H65.829V.663H53.76v38.674h37.413Zm17.554 0V.663H96.658v38.674h12.069Zm34.011 0V11.326h16.403V.663h-44.928v10.663h16.457v28.011h12.068ZM192 40V28.84h-7.406c-5.211 0-8.777-3.647-8.777-8.84 0-4.972 3.566-8.674 8.777-8.674H192V0h-7.406c-12.288 0-21.065 8.066-21.065 20 0 11.989 9.052 20 21.065 20H192Z"
-              fill-rule="nonzero" />
-            <path d="M214 40V28.837h-23.004V40z" />
-          </g>
-        </svg>
-
-        <!-- Extend -->
-        <div class="logo-expand">
-        </div>
-        <!-- CH.FAMILY -->
-        <svg class="logo-part2" width="342" height="40" viewBox="0 0 342 40" xmlns="http://www.w3.org/2000/svg">
-          <g fill="#FFF" fill-rule="evenodd">
-            <path
-              d="M44.663 39.337V24.972h21.072v14.365h12.042V.663H65.735v13.536H44.663V.663H32.62v38.674h12.042Zm50.629 0V27.901H83.25v11.436h12.042Zm17.515 0V26.961h22.714V16.464h-22.714V11.16h26.436V.663h-38.478v38.674h12.042Zm41.871 0 1.587-6.133h21.894l1.587 6.133h12.206L181.826.663h-29.173l-10.126 38.674h12.151Zm20.69-16.906h-16.366l2.846-11.105h10.673l2.847 11.105Zm31.636 16.906v-21.05l13.629 13.702 13.081-13.425v20.773h11.768V.663h-11.768l-13.081 14.254L207.003.663h-11.767v38.674h11.768Zm55.993 0V.663h-12.042v38.674h12.042Zm42.802 0V28.674h-25.287V.663H268.47v38.674h37.329ZM14.652 25.002l13.199.004c-2.058 9.025-9.793 14.85-20.077 14.991L7.39 40H-.47V28.839h7.86c3.17 0 5.737-1.572 7.263-3.837ZM306.806.663l10.235 12.707L327.277.663H342l-18.938 23.702v14.972h-12.041V24.254L292.083.663h14.723ZM7.39 0c10.479 0 18.382 5.86 20.464 15.001l-13.227.005c-1.481-2.12-3.925-3.586-6.942-3.676l-.295-.004-7.86-.001V0h7.86Z"
-              fill-rule="nonzero" />
-            <path d="M0 40V28.837h-23.004V40z" />
-          </g>
-        </svg>
- 
-      </div>
+      <object data="logo.html" type="application/xhtml+xml" class="logo"></object>
     </h1>
 
 
@@ -185,9 +170,9 @@
           <feTurbulence id="turbulence" baseFrequency="0.02" numOctaves="8" result="noise" seed="0"/>
           <feConvolveMatrix in="noise" order="3" result="snoise"
           kernelMatrix="
-             0  -1   0
+            0  -1   0
             -1   5  -1
-             0  -1   0
+            0  -1   0
           "/>
           <feDisplacementMap id="displacement" in="SourceGraphic" in2="snoise" scale="6" />
         </filter>
@@ -195,9 +180,9 @@
           <feTurbulence id="turbulence" baseFrequency="0.2" numOctaves="8" result="noise" seed="1"/>
           <feConvolveMatrix in="noise" order="3" result="snoise"
           kernelMatrix="
-             0  -1   0
+            0  -1   0
             -1   5  -1
-             0  -1   0
+            0  -1   0
           "/>
           <feDisplacementMap id="displacement" in="SourceGraphic" in2="snoise" scale="6" />
         </filter>
@@ -205,9 +190,9 @@
           <feTurbulence id="turbulence" baseFrequency="0.01" numOctaves="6" result="noise" seed="2"/>
           <feConvolveMatrix in="noise" order="3" result="snoise"
           kernelMatrix="
-             0  -1   0
+            0  -1   0
             -1   5  -1
-             0  -1   0
+            0  -1   0
           "/>
           <feDisplacementMap id="displacement" in="SourceGraphic" in2="snoise" scale="6" />
         </filter>
