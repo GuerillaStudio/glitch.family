@@ -38,10 +38,14 @@
       }
       .logo {
         position: relative;
-        width: 90%;
-        max-width: 900px;
+        width: 80%;
         aspect-ratio: 534 / 40;
+      }
+      @media (max-width: 600px) {
+        .logo {
+          width: 90%;
         }
+      }
 
       @media (min-width: 534px) {
         .logo {
